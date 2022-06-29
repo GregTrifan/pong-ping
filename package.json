@@ -1,0 +1,9 @@
+{
+  "name": "pong-ping",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Trifan Grigore-Gabriel <trifangaby71@protonmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces":["backend","ui","shared"] 
+}
