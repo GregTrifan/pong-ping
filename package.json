@@ -5,5 +5,8 @@
   "author": "Trifan Grigore-Gabriel <trifangaby71@protonmail.com>",
   "license": "MIT",
   "private": true,
-  "workspaces":["backend","ui","shared"] 
+  "workspaces":["backend","ui","shared"],
+  "scripts": {
+    "dev":"yarn workspace @pong-ping/backend local & yarn workspace @pong-ping/ui start"
+  }
 }
