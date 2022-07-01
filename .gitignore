@@ -11,7 +11,7 @@
 dist
 # testing
 /coverage
-
+/docker
 # production
 /build
 .env

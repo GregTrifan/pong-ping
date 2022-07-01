@@ -7,6 +7,8 @@
   "private": true,
   "workspaces":["backend","ui","shared"],
   "scripts": {
-    "dev":"yarn workspace @pong-ping/backend local & yarn workspace @pong-ping/ui start"
+    "dev":"yarn workspace @pong-ping/backend local & yarn workspace @pong-ping/ui start",
+    "backend":"yarn workspace @pong-ping/backend local",
+    "ui":"yarn workspace @pong-ping/ui start"
   }
 }
