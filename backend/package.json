@@ -9,7 +9,6 @@
     "deploy": "sls deploy"
   },
   "devDependencies": {
-    "shared":"1.0.0",
     "@types/aws-lambda": "^8.10.101",
     "serverless": "^3.19.0",
     "serverless-dotenv-plugin": "^4.0.1",
