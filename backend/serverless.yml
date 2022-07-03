@@ -1,28 +1,11 @@
-# Welcome to Serverless!
-#
-# This file is the main config file for your service.
-# It's very minimal at this point and uses default values.
-# You can always add more config options for more control.
-# We've included some commented out config examples here.
-# Just uncomment any of them to get that config option.
-#
-# For full config options, check the docs:
-#    docs.serverless.com
-#
-# Happy Coding!
-
 service: backend
-# app and org for use with dashboard.serverless.com
 app: backend
 org: gregtrifan
-
-# You can pin your service to only deploy with a specific Serverless version
-# Check out our docs for more details
 frameworkVersion: "3"
 
 provider:
   name: aws
-  runtime: nodejs12.x
+  runtime: nodejs14.x
   region: us-east-1
   environment:
     DYNAMODB_NAMESPACE: ${opt:stage, "dev"}
@@ -39,9 +22,11 @@ provider:
 
 plugins:
   - serverless-plugin-typescript
+  - serverless-dynamodb-local
   - serverless-plugin-monorepo
   - serverless-offline
 package:
+  individually: true
   exclude:
     - test/**
     - coverage/**
@@ -80,11 +65,20 @@ functions:
           method: GET
           path: /api/players
           cors: true
-
 custom:
   # serverless offline plugin setup
   serverless-offline:
     httpPort: 4000
+  dynamodb:
+    stages:
+      - "dev"
+      - "test"
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+    migration:
+      dir: offline/migrations
 resources:
   Resources:
     GamesDynamoDBTable:
@@ -92,22 +86,14 @@ resources:
       Properties:
         AttributeDefinitions:
           - AttributeName: id
-            AttributeType: N
-          - AttributeName: score1
-            AttributeType: N
-          - AttributeName: score2
-            AttributeType: N
-          - AttributeName: player1
-            AttributeType: S
-          - AttributeName: player2
             AttributeType: S
         KeySchema:
-          - AttributeName: slug
+          - AttributeName: id
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-        TableName: realworld-${self:provider.environment.DYNAMODB_NAMESPACE}-players
+        TableName: realworld-${self:provider.environment.DYNAMODB_NAMESPACE}-games
 
     PlayersDynamoDBTable:
       Type: "AWS::DynamoDB::Table"

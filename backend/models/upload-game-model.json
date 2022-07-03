@@ -2,7 +2,7 @@
   "definitions": {},
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
-  "title": "The Root Schema",
+  "title": "Game Upload Schema",
   "required":["player1","player2"],
   "properties": {
     "score1": {
