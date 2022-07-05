@@ -58,6 +58,14 @@ functions:
           path: /api/game/{session}
           cors: true
 
+  getPlayer:
+    handler: src/Players/get.handler
+    events:
+      - http:
+          method: GET
+          path: /api/player/{player}
+          cors: true
+
   listPlayers:
     handler: src/Players/list.handler
     events:
@@ -65,6 +73,7 @@ functions:
           method: GET
           path: /api/players
           cors: true
+
 custom:
   # serverless offline plugin setup
   serverless-offline:
