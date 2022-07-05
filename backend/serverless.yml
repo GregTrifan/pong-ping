@@ -47,7 +47,7 @@ functions:
     events:
       - http:
           method: GET
-          path: /api/games
+          path: /api/games/{page}
           cors: true
 
   getGame:
