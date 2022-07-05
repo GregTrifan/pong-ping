@@ -7,9 +7,10 @@ module.exports.handler = async (event: APIGatewayProxyEvent) => {
   const gamesTable = getTableName("games");
   let gameID = event.pathParameters?.page;
   try {
-    const params: DocumentClient.ScanInput = {
+    const params: DocumentClient.QueryInput = {
       TableName: gamesTable,
       Limit: 100,
+      ScanIndexForward: false,
     };
     const game = await docClient
       .get({
