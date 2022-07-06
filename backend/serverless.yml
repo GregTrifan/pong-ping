@@ -73,6 +73,13 @@ functions:
           method: GET
           path: /api/players
           cors: true
+  listLoserPlayers:
+    handler: src/Players/list-losers.handler
+    events:
+      - http:
+          method: GET
+          path: /api/losers
+          cors: true
 
 custom:
   # serverless offline plugin setup
@@ -112,6 +119,8 @@ resources:
             AttributeType: S
           - AttributeName: wins
             AttributeType: N
+          - AttributeName: loses
+            AttributeType: N
         KeySchema:
           - AttributeName: name
             KeyType: HASH
@@ -123,6 +132,15 @@ resources:
           - IndexName: winners
             KeySchema:
               - AttributeName: wins
+                KeyType: HASH
+            Projection:
+              ProjectionType: ALL
+            ProvisionedThroughput:
+              ReadCapacityUnits: 1
+              WriteCapacityUnits: 1
+          - IndexName: losers
+            KeySchema:
+              - AttributeName: loses
                 KeyType: HASH
             Projection:
               ProjectionType: ALL

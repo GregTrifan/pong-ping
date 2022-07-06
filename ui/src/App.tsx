@@ -5,10 +5,15 @@ import TopPlayers from "./pages/TopPlayers";
 import UploadGame from "./pages/UploadGame";
 import { HeaderMenu } from "./components/HeaderMenu";
 import { NotFound } from "./pages/NotFound";
+import Losers from "./pages/Losers";
 const links = [
   {
     link: "/players",
     label: "Top players",
+  },
+  {
+    link: "/losers",
+    label: "Top Losers",
   },
   {
     link: "/upload",
@@ -37,6 +42,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Games />} />
           <Route path="/players" element={<TopPlayers />} />
+          <Route path="/losers" element={<Losers />} />
           <Route path="/upload" element={<UploadGame />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
