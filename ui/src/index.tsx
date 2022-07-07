@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import { NotificationsProvider } from "@mantine/notifications";
 import reportWebVitals from "./reportWebVitals";
 import { setupStore } from "./store";
 import { Provider } from "react-redux";
@@ -12,7 +13,9 @@ const store = setupStore();
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <NotificationsProvider>
+        <App />
+      </NotificationsProvider>
     </Provider>
   </React.StrictMode>
 );
