@@ -119,7 +119,7 @@ resources:
             AttributeType: S
           - AttributeName: wins
             AttributeType: N
-          - AttributeName: loses
+          - AttributeName: losses
             AttributeType: N
         KeySchema:
           - AttributeName: name
@@ -140,7 +140,7 @@ resources:
               WriteCapacityUnits: 1
           - IndexName: losers
             KeySchema:
-              - AttributeName: loses
+              - AttributeName: losses
                 KeyType: HASH
             Projection:
               ProjectionType: ALL

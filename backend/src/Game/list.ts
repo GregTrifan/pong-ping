@@ -26,7 +26,7 @@ module.exports.handler = async (event: APIGatewayProxyEvent) => {
     const response = await docClient.scan(params).promise();
     const items = response.Items;
     if (items) {
-      let lastItem: number = items[items.length - 1].id;
+      let lastItem: string = items[items.length - 1].id;
       return {
         statusCode: 200,
         body: JSON.stringify({

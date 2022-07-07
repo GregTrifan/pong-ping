@@ -5,16 +5,16 @@ import { generateId } from "../idGen";
 const gamesTable = getTableName("games");
 const playersTable = getTableName("players");
 
-const increaseLoses = (name: string) => {
+const increaseLosses = (name: string) => {
   docClient
     .update({
       TableName: playersTable,
       Key: {
         name: name,
       },
-      UpdateExpression: "ADD loses :loses",
+      UpdateExpression: "ADD losses :losses",
       ExpressionAttributeValues: {
-        ":loses": 1,
+        ":losses": 1,
       },
       ReturnValues: "NONE",
     })
@@ -34,7 +34,7 @@ const increaseWins = (name: string, name_2: string) => {
       ReturnValues: "NONE",
     })
     .promise();
-  increaseLoses(name_2);
+  increaseLosses(name_2);
 };
 
 const createPlayer = (name: string) => {
@@ -44,7 +44,7 @@ const createPlayer = (name: string) => {
       Item: {
         name: name,
         wins: 0,
-        loses: 0,
+        losses: 0,
       },
     })
     .promise();
@@ -75,7 +75,7 @@ module.exports.handler = async (event: APIGatewayProxyEvent) => {
     createPlayer(player2);
   }
   if (score1 > score2) increaseWins(player1, player2);
-  else increaseWins(player2, player1);
+  else if (score1 < score2) increaseWins(player2, player1);
   return {
     statusCode: 200,
     body: JSON.stringify({ message: "Game uploaded successfully!" }),
