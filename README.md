@@ -24,8 +24,14 @@
    ```
 3. Configure the `.env` variable under `ui/.env` and `backend/.env`
    (optional, by default is already pointed to the local serverless instance)
-   `REACT_APP_BACKEND_ENDPOINT="YOUR_SERVERLESS_API_ENDPOINT"` (`ui/.env`)
-   `API_ENDPOINT="YOUR_SERVERLESS_API_ENDPOINT"` (`backend/.env`)
+   * `ui/.env`
+   ```
+   REACT_APP_BACKEND_ENDPOINT="YOUR_SERVERLESS_API_ENDPOINT"
+   ```
+   * `backend/.env`
+   ```
+   API_ENDPOINT="YOUR_SERVERLESS_API_ENDPOINT"
+   ``` 
 4. Go back to the repo directory (`cd ..`) and run the project
    - For Unix & Unix-like systems
    ```
