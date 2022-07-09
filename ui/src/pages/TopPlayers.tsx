@@ -1,9 +1,11 @@
 import { Title } from "@mantine/core";
+import EmptyRes from "../components/EmptyRes";
 import ListSkeletons from "../components/ListSkeletons";
 import PlayersContainer from "../components/Players/PlayersContainer";
 import { useListTopPlayersQuery } from "../services/pong";
 const TopPlayers = () => {
-  const { data: playersData } = useListTopPlayersQuery();
+  const { data: playersData, isLoading } = useListTopPlayersQuery();
+  if (isLoading) return <ListSkeletons n={20} />;
   if (playersData)
     return (
       <div>
@@ -14,7 +16,7 @@ const TopPlayers = () => {
       </div>
     );
 
-  return <ListSkeletons n={10} />;
+  return <EmptyRes />;
 };
 
 export default TopPlayers;

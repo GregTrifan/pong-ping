@@ -10,6 +10,7 @@
     "dev":"yarn workspace @pong-ping/backend local & yarn workspace @pong-ping/ui start",
     "backend":"yarn workspace @pong-ping/backend local",
     "ui":"yarn workspace @pong-ping/ui start",
-    "test:ui":"yarn workspace @pong-ping/ui test"
+    "test:ui":"yarn workspace @pong-ping/ui test",
+    "test:backend":"yarn workspace @pong-ping/backend e2e"
   }
 }

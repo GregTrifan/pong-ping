@@ -1,6 +1,7 @@
 import { Button, Center, Text, Title } from "@mantine/core";
 import { useEffect, useRef, useState } from "react";
 import { ArrowBigDown } from "tabler-icons-react";
+import EmptyRes from "../components/EmptyRes";
 import GamesContainer from "../components/Games/GamesContainer";
 import ListSkeletons from "../components/ListSkeletons";
 import { useLazyListGamesQuery } from "../services/pong";
@@ -10,8 +11,9 @@ const Games = () => {
   const shouldReset = useRef(true);
   const [results, setResults] = useState<Array<Game>>([]);
   const [trigger, result] = useLazyListGamesQuery();
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    trigger("1");
+    trigger("1").then(() => setIsLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -25,7 +27,8 @@ const Games = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [result.data]);
-  if (results)
+  if (isLoading) return <ListSkeletons n={40} />;
+  if (results.length !== 0)
     return (
       <div>
         <Title align="center">Previous Matches</Title>
@@ -47,7 +50,7 @@ const Games = () => {
         </Center>
       </div>
     );
-  return <ListSkeletons n={10} />;
+  return <EmptyRes />;
 };
 
 export default Games;

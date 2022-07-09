@@ -78,6 +78,6 @@ module.exports.handler = async (event: APIGatewayProxyEvent) => {
   else if (score1 < score2) increaseWins(player2, player1);
   return {
     statusCode: 200,
-    body: JSON.stringify({ message: "Game uploaded successfully!" }),
+    body: JSON.stringify({ message: "Game uploaded successfully!", id: newID }),
   };
 };
