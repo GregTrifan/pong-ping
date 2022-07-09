@@ -17,7 +17,7 @@ const GameCard = ({ game }: GameCardProps) => {
       </Badge>
     );
   return (
-    <tr key={game.id}>
+    <tr>
       <td>
         <PlayerOverview name={game.player1} />
       </td>

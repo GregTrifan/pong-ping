@@ -1,5 +1,4 @@
-import { ScrollArea, Table } from "@mantine/core";
-import React from "react";
+import { Table } from "@mantine/core";
 import { Player } from "../../types/Player";
 import PlayerCard from "./PlayerCard";
 interface PlayerContainerProps {
@@ -7,23 +6,20 @@ interface PlayerContainerProps {
 }
 const playersContainer = ({ players }: PlayerContainerProps) => {
   const rows = players.map((player, i) => (
-    <React.Fragment key={i}>
-      <PlayerCard player={player} />
-    </React.Fragment>
+    <PlayerCard player={player} key={i} n={i + 1} />
   ));
   return (
-    <ScrollArea>
-      <Table mt={40} verticalSpacing="sm">
-        <thead>
-          <tr>
-            <th>Player Name</th>
-            <th>Wins</th>
-            <th>Losses</th>
-          </tr>
-        </thead>
-        <tbody>{rows}</tbody>
-      </Table>
-    </ScrollArea>
+    <Table mt={40} verticalSpacing="sm">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Player Name</th>
+          <th>Wins</th>
+          <th>Losses</th>
+        </tr>
+      </thead>
+      <tbody>{rows}</tbody>
+    </Table>
   );
 };
 

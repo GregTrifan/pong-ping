@@ -5,7 +5,7 @@ interface ListSkeletonsProps {
 }
 const ListSkeletons = ({ n }: ListSkeletonsProps) => {
   return (
-    <div>
+    <div id="loading-container">
       {Array.apply(0, Array(n)).map((x, i) => (
         <Skeleton height={10} my={3} radius="xl" key={i} />
       ))}

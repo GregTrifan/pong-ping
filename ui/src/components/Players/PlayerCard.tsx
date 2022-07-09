@@ -3,10 +3,16 @@ import { Player } from "../../types/Player";
 
 interface PlayerCardProps {
   player: Player;
+  n: number;
 }
-const PlayerCard = ({ player }: PlayerCardProps) => {
+const PlayerCard = ({ player, n }: PlayerCardProps) => {
   return (
     <tr>
+      <td>
+        <Text size="md" weight={800}>
+          {n}
+        </Text>
+      </td>
       <td>
         <Text size="md" weight={500}>
           {player.name}
