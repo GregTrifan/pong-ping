@@ -5,7 +5,7 @@
 - `NodeJS v16.15` or greater
 - Serverless v3
   ```
-  npm install -g serverless
+  npm install -g serverless@3
   ```
 - Yarn (preferably latest version) `npm i -g yarn`
 - Java Runtime Engine (JRE) `6.x` or greater (used by `serverless-dynamodb-local`)
