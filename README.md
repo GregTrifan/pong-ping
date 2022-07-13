@@ -56,3 +56,20 @@
   ```
      yarn test:backend
   ```
+### App State Diagram
+```mermaid
+stateDiagram-v2
+    state App {
+      direction LR
+      state Frontend {
+      React --> Redux_RTK
+      Redux_RTK --> ServerlessFunctions
+      ServerlessFunctions --> Redux_RTK
+    }
+    state Backend {
+      
+      ServerlessFunctions --> DynamoDB
+      DynamoDB --> ServerlessFunctions
+    }
+    }
+```
